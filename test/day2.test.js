@@ -1,6 +1,6 @@
 const { part1, part2 } = require('../src/day2');
 
-describe('Day 1', () => {
+describe('Day 2', () => {
   describe('Should calculate part 1', () => {
     test('abcdef, bababc, abbcde, abcccd, aabcdd, abcdee, ababab => 12', () => {
       const input = [

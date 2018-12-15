@@ -8,7 +8,7 @@ const input = [
   'Step B must be finished before step E can begin.',
   'Step D must be finished before step E can begin.',
   'Step F must be finished before step E can begin.',
-]
+];
 
 describe('Day 7', () => {
   describe('Should calculate part 1', () => {

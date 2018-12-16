@@ -1,28 +1,19 @@
-function frequencyCount(str) {
-  const count = {};
-  [...str].forEach(char => {
-    count[char] = (count[char] || 0) + 1;
-  });
-  const result = {};
-  Object.keys(count).forEach(key => {
-    result[count[key]] = (result[count[key]] || 0) + 1;
-  });
-  return result;
-}
+const frequencyCount = str =>
+  [...str].reduce((result, char) => {
+    result[result[char]] -= 1;
+    result[char] = (result[char] || 0) + 1;
+    result[result[char]] = (result[result[char]] || 0) + 1;
+    return result;
+  }, []);
 
 function part1(data) {
-  let amount2 = 0;
-  let amount3 = 0;
+  const amount = { 2: 0, 3: 0 };
   data.forEach(item => {
-    const frequency = frequencyCount(item);
-    if (frequency[2] > 0) {
-      amount2 += 1;
-    }
-    if (frequency[3] > 0) {
-      amount3 += 1;
-    }
+    const [, , a, b] = frequencyCount(item);
+    amount[2] += a > 0 ? 1 : 0;
+    amount[3] += b > 0 ? 1 : 0;
   });
-  return amount2 * amount3;
+  return amount[2] * amount[3];
 }
 
 function indexDifferent(str1, str2) {
